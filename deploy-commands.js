@@ -40,7 +40,7 @@ const rest = new REST().setToken(token);
 		const data = await rest.put(
             // Switch next two commands for global/local command additions
 			// Routes.applicationGuildCommands(clientId, guildId),
-            guildMember = guild.members.cache.get(user.id);
+			Routes.applicationCommands(clientId),
 			{ body: commands },
 		);
 
