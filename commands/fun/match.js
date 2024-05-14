@@ -20,7 +20,6 @@ module.exports = {
         var u1name = guild_u1.displayName.toLowerCase();
         var u2name = guild_u2.displayName.toLowerCase();
         var rating = stringSimilarity.compareTwoStrings(u1name, u2name);
-        console.log(u1name, u2name, rating);
         switch (true) {
             case (rating < 0.1):
 		         await interaction.reply(`${rating} compatability? lad youve got no chance`);
