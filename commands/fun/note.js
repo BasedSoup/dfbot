@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 
 module.exports = { 
@@ -30,7 +30,6 @@ module.exports = {
         var curCommand = interaction.options.getSubcommand();
         var newMsg = interaction.options.getString('message');
         var u2notes = notedata.find((element) => element.id == user2.id);
-        console.log(u2notes)
         switch (curCommand) {
             case 'add':
                 if (u2notes == undefined) {
@@ -58,15 +57,24 @@ module.exports = {
                 break;
 
              case 'list':
-                    var messagelist = `${user2.username}'s Notes:\n`
+                    
+                    var messagelist = []
                     try {
                         for (i = 1; i < 6; i++){
                             curnotedata = u2notes.notes[u2notes.notes.length - i];
-                            _s = `${curnotedata.message}\n- ${curnotedata.author.name}\n`; 
-                            messagelist += _s;
-                    }} catch (error) { }
-
-		        await interaction.reply(messagelist);
+                            // _s = `${curnotedata.message}\n- ${curnotedata.author.name}\n`; 
+                            _s = { name: curnotedata.author.name, value: curnotedata.message}
+                            messagelist.push(_s);
+}} catch (error) { }
+                    try {
+                    const noteEmbed = new EmbedBuilder()
+                    .setTitle(`${user2.username}'s Notes:\n`)
+                    .setFooter(`Page 1/${u2notes.notes.length}`)
+                    .addFields(messagelist)
+		        await interaction.reply({ embeds: [noteEmbed]});
+                    } catch (error){
+                        await interaction.reply(`${user2.username} has no notes. :frowning2:`);
+                    }
                 break;
 
              default:
