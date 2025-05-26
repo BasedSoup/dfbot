@@ -1,0 +1,24 @@
+Welcome to Node.js v18.19.0.
+Type ".help" for more information.
+> undefined
+> > --------------------------------------------------
+Core Dependencies
+- @discordjs/voice: 0.17.0
+- prism-media: 1.3.5
+
+Opus Libraries
+- @discordjs/opus: 0.9.0
+- opusscript: not found
+
+Encryption Libraries
+- sodium-native: not found
+- sodium: not found
+- libsodium-wrappers: 0.7.13
+- tweetnacl: not found
+
+FFmpeg
+- version: 6.0-static https://johnvansickle.com/ffmpeg/ 
+- libopus: yes
+--------------------------------------------------
+undefined
+> 
